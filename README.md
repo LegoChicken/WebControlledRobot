@@ -10,7 +10,8 @@ Adapted from [James Poole's](http://jamespoole.me/2016/04/29/web-controlled-robo
 * [Raspberry Pi Camera v1](https://uk.pi-supply.com/products/raspberry-pi-camera-board-v1-3-5mp-1080p)
 * [MJPG-streamer](https://github.com/jacksonliam/mjpg-streamer) streaming application instead of motion. Since it's less resource intensive, video responsiveness and quality improved noticeably
 * Updated index.html page from [Pablo Rogina's](https://bitbucket.org/pablojr/webcontrolledrobot/src/master/)
-* Add catching of Ctrl-C using [python signals](https://docs.python.org/3/library/signal.html) with help from ["Stack Overflow How do I capture SIGINT in Python?"](https://stackoverflow.com/questions/1112343/how-do-i-capture-sigint-in-python)
+* Added automatic running and killing of MJPG-streamer using [subprocess.Popen](https://docs.python.org/2/library/subprocess.html#popen-constructor)
+* Add catching of Ctrl-C using [python signals](https://docs.python.org/3/library/signal.html) with help from ["Stack Overflow How do I capture SIGINT in Python?"](https://stackoverflow.com/questions/1112343/how-do-i-capture-sigint-in-python). Stops MJPG-streamer using [Popen.terminate](https://docs.python.org/2/library/subprocess.html#subprocess.Popen.terminate)
 
 Developed using [VS Code](https://code.visualstudio.com/) with [Visual Studio Code Remote - SSH extension](https://code.visualstudio.com/docs/remote/ssh), [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) and [Code Spell Checker extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker).
 
@@ -36,12 +37,11 @@ Test with:
 From https://github.com/LegoChicken/WebControlledRobot:
 * `cd`
 * `git clone git@github.com:LegoChicken/WebControlledRobot.git`
+* `cd WebControlledRobot`
+* `chmod a+rx app.py` # Make executable
 
 ## Running the robot
-* Start the webcam steam:
-
-`mjpg_streamer -i "input_raspicam.so -hf -vf -fps 10" -o "output_http.so -w /usr/local/share/mjpg-streamer/www/" &`
-*
+* `./app.py`
 
 ## To do
-* Start & stop mjpg_streamer from app.py
+* More...

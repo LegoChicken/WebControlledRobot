@@ -19,4 +19,5 @@ def stop():
     streamer_process.poll()
     # https://docs.python.org/2/library/subprocess.html#subprocess.Popen.returncode
     if streamer_process.returncode is None:
+        # https://docs.python.org/2/library/subprocess.html#subprocess.Popen.terminate
         streamer_process.terminate()
