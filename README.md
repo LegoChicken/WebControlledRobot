@@ -1,12 +1,44 @@
-# Raspberry Pi Web Controlled Robot With Video Stream #
+# Raspberry Pi CamJam EduKit 3 Web Controlled Robot With Video Stream
 
-Raspberry Pi Robot that can be controlled via a website with a live streaming webcam
+Raspberry Pi Robot that can be controlled via a website with a live streaming webcam. Using [Flask](https://flask.palletsprojects.com/en/1.1.x/), [python 3](https://docs.python.org/3/) and
 
-Adapted from [James Poole's project](http://jamespoole.me/2016/04/29/web-controlled-robot-with-video-stream/) with changes as follows:
+Adapted from [James Poole's](http://jamespoole.me/2016/04/29/web-controlled-robot-with-video-stream/) and [Pablo Rogina's](https://bitbucket.org/pablojr/webcontrolledrobot/src/master/) projects with changes as follows:
 
-* [Adafruit motor shield v1](https://learn.adafruit.com/adafruit-motor-shield) instead of LD293 IC + proto-board
-* New Python module to drive the motors through the motor shield, taking C source code this [post](https://www.raspberrypi.org/forums/viewtopic.php?f=45&t=16118) as guideline
-* [MJPG-streamer](https://sourceforge.net/projects/mjpg-streamer) streaming application instead of motion. Since it's less resource intensive, video responsiveness and quality icmproved noticeably
-* Updated index.html page:
-    * Removed fixed IP for streaming server (based on [Quintin Balsdon's improvement)](https://github.com/qbalsdon/WebControlledRobot)
-    * Rearranged control buttons to mimic layout of most remote controls (stop button moved into center of motion arrows)
+* [CamJam EduKit 3](https://camjam.me/?page_id=1035) instead of LD293 IC + proto-board. Controlled by [gpiozero](https://gpiozero.readthedocs.io/en/stable/#) using [CamJamKitRobot API](https://gpiozero.readthedocs.io/en/stable/api_boards.html?highlight=CamJamKitRobot#camjamkitrobot)
+
+* [Raspberry Pi Camera v1](https://uk.pi-supply.com/products/raspberry-pi-camera-board-v1-3-5mp-1080p)
+* [MJPG-streamer](https://github.com/jacksonliam/mjpg-streamer) streaming application instead of motion. Since it's less resource intensive, video responsiveness and quality improved noticeably
+* Updated index.html page from [Pablo Rogina's](https://bitbucket.org/pablojr/webcontrolledrobot/src/master/)
+
+## Installing MJPG-streamer
+Based on [Michel Deslierres' instructions](https://www.sigmdel.ca/michel/ha/rpi/streaming_en.html#software) and [mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer):
+* sudo apt-get install cmake libjpeg8-dev
+* sudo apt-get install gcc g++
+* cd
+* git clone git@github.com:jacksonliam/mjpg-streamer.git
+* cd mjpg-streamer/mjpg-streamer-experimental/
+* make
+* sudo make install
+
+Get help with the Raspberry Pi input plug in:
+`
+Test with:
+
+* `mjpg_streamer -i "input_raspicam.so -hf -vf -fps 10" -o "output_http.so -w /usr/local/share/mjpg-streamer/www/" &`
+* http:\\\\\<pi address>\:8080/?action=stream
+* kill %1
+
+## Installing WebControlledRobot
+From https://github.com/LegoChicken/WebControlledRobot:
+* cd
+* git clone git@github.com:LegoChicken/WebControlledRobot.git
+
+## Running the robot
+* Start the webcam steam:
+
+`mjpg_streamer -i "input_raspicam.so -hf -vf -fps 10" -o "output_http.so -w /usr/local/share/mjpg-streamer/www/" &`
+*
+
+## To do
+* Start & stop mjpg_streamer from app.py
+* EDU Kit motors
