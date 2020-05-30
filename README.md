@@ -1,24 +1,28 @@
 # Raspberry Pi CamJam EduKit 3 Web Controlled Robot With Video Stream
 
-Raspberry Pi Robot that can be controlled via a website with a live streaming webcam. Using [Flask](https://flask.palletsprojects.com/en/1.1.x/), [python 3](https://docs.python.org/3/) and
+Raspberry Pi Robot that can be controlled via a website with a live streaming webcam. Using [Flask](https://flask.palletsprojects.com/en/1.1.x/),  and
 
 Adapted from [James Poole's](http://jamespoole.me/2016/04/29/web-controlled-robot-with-video-stream/) and [Pablo Rogina's](https://bitbucket.org/pablojr/webcontrolledrobot/src/master/) projects with changes as follows:
 
+* [Python 3](https://docs.python.org/3/)
 * [CamJam EduKit 3](https://camjam.me/?page_id=1035) instead of LD293 IC + proto-board. Controlled by [gpiozero](https://gpiozero.readthedocs.io/en/stable/#) using [CamJamKitRobot API](https://gpiozero.readthedocs.io/en/stable/api_boards.html?highlight=CamJamKitRobot#camjamkitrobot)
 
 * [Raspberry Pi Camera v1](https://uk.pi-supply.com/products/raspberry-pi-camera-board-v1-3-5mp-1080p)
 * [MJPG-streamer](https://github.com/jacksonliam/mjpg-streamer) streaming application instead of motion. Since it's less resource intensive, video responsiveness and quality improved noticeably
 * Updated index.html page from [Pablo Rogina's](https://bitbucket.org/pablojr/webcontrolledrobot/src/master/)
+* Add catching of Ctrl-C using [python signals](https://docs.python.org/3/library/signal.html) with help from ["Stack Overflow How do I capture SIGINT in Python?"](https://stackoverflow.com/questions/1112343/how-do-i-capture-sigint-in-python)
+
+Developed using [VS Code](https://code.visualstudio.com/) with [Visual Studio Code Remote - SSH extension](https://code.visualstudio.com/docs/remote/ssh), [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) and [Code Spell Checker extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker).
 
 ## Installing MJPG-streamer
 Based on [Michel Deslierres' instructions](https://www.sigmdel.ca/michel/ha/rpi/streaming_en.html#software) and [mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer):
-* sudo apt-get install cmake libjpeg8-dev
-* sudo apt-get install gcc g++
-* cd
-* git clone git@github.com:jacksonliam/mjpg-streamer.git
-* cd mjpg-streamer/mjpg-streamer-experimental/
-* make
-* sudo make install
+* `sudo apt-get install cmake libjpeg8-dev`
+* `sudo apt-get install gcc g++`
+* `cd`
+* `git clone git@github.com:jacksonliam/mjpg-streamer.git`
+* `cd mjpg-streamer/mjpg-streamer-experimental/`
+* `make`
+* `sudo make install`
 
 Get help with the Raspberry Pi input plug in:
 `
@@ -26,12 +30,12 @@ Test with:
 
 * `mjpg_streamer -i "input_raspicam.so -hf -vf -fps 10" -o "output_http.so -w /usr/local/share/mjpg-streamer/www/" &`
 * http:\\\\\<pi address>\:8080/?action=stream
-* kill %1
+* `kill %1`
 
 ## Installing WebControlledRobot
 From https://github.com/LegoChicken/WebControlledRobot:
-* cd
-* git clone git@github.com:LegoChicken/WebControlledRobot.git
+* `cd`
+* `git clone git@github.com:LegoChicken/WebControlledRobot.git`
 
 ## Running the robot
 * Start the webcam steam:
@@ -41,4 +45,3 @@ From https://github.com/LegoChicken/WebControlledRobot:
 
 ## To do
 * Start & stop mjpg_streamer from app.py
-* EDU Kit motors

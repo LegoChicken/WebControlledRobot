@@ -9,9 +9,13 @@
 
 from flask import Flask, render_template, request, redirect, url_for, make_response
 import motors
-# import RPi.GPIO as GPIO
+import signal
+import sys
 
-# GPIO.setmode(GPIO.BOARD) #set up GPIO
+def signal_handler(sig, frame):
+    print('You pressed Ctrl+C!')
+    sys.exit(0)
+signal.signal(signal.SIGINT, signal_handler)
 
 app = Flask(__name__) #set up flask server
 
