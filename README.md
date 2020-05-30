@@ -15,6 +15,17 @@ Adapted from [James Poole's](http://jamespoole.me/2016/04/29/web-controlled-robo
 
 Developed using [VS Code](https://code.visualstudio.com/) with [Visual Studio Code Remote - SSH extension](https://code.visualstudio.com/docs/remote/ssh), [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) and [Code Spell Checker extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker).
 
+## Using VS Code (optional)
+VS Code can remotely develop on the Pi, but it doesn't work on the Pi Zero. Setup by:
+* Install VS Code on the remote PC from [Visual Studio Code](https://code.visualstudio.com/)
+* Install [Visual Studio Code Remote - SSH extension](https://code.visualstudio.com/docs/remote/ssh)
+* To do finish
+
+## Installing Raspberry Pi Camera
+https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md
+'raspistill --help'
+todo finish
+
 ## Installing MJPG-streamer
 Based on [Michel Deslierres' instructions](https://www.sigmdel.ca/michel/ha/rpi/streaming_en.html#software) and [mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer):
 * `sudo apt-get install cmake libjpeg8-dev`
@@ -33,6 +44,13 @@ Test with:
 * http:\\\\\<pi address>\:8080/?action=stream
 * `kill %1`
 
+Get input & output option help:
+* `mjpg_streamer -i "input_raspicam.so --help"`
+* `mjpg_streamer -0 "output_http.so --help"`
+
+Important raspicam input parameters:
+* [-fps | --framerate]...: set video framerate, default 5 frame/sec
+
 ## Installing WebControlledRobot
 From https://github.com/LegoChicken/WebControlledRobot:
 * `cd`
@@ -44,4 +62,6 @@ From https://github.com/LegoChicken/WebControlledRobot:
 * `./app.py`
 
 ## To do
-* More...
+* Give a fixed size to the web stream.
+* Improve LEGO strength
+* Document camera above
