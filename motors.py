@@ -6,43 +6,30 @@
 # motors.py
 #######
 
+# https://gpiozero.readthedocs.io/en/stable/api_boards.html?highlight=CamJamKitRobot#gpiozero.Robot
 from gpiozero import CamJamKitRobot  # Import the GPIO Zero Library CamJam library
 from time import sleep
 
 robot = CamJamKitRobot()
 
-# Set the relative speeds of the two motors, between 0.0 and 1.0
-motorspeed = 1.0
-
-motorforward = (motorspeed, motorspeed)
-motorbackward = (-motorspeed, -motorspeed)
-motorleft = (motorspeed, 0)
-motorright = (0, motorspeed)
+# Set speeds between 0.0 and 1.0
+# https://gpiozero.readthedocs.io/en/stable/api_boards.html?highlight=CamJamKitRobot#gpiozero.Robot
+forwardspeed = 1.0
+backwardspeed = 1.0
+leftspeed = 0.4
+rightspeed = leftspeed
 
 def forward():
-    print("Going Forwards")
-    robot.value = motorforward
-
-    sleep(2)
+    robot.forward(forwardspeed)
 
 def backward():
-    print("Going Backwards")
-    robot.value = motorbackward
-
-    sleep(2)
+    robot.backward(backwardspeed)
 
 def turnRight():
-    print("Going Right")
-    robot.value = motorright
-
-    sleep(2)
+    robot.right(rightspeed)
 
 def turnLeft():
-    print("Going Left")
-    robot.value = motorleft
-
-    sleep(2)
+    robot.left(leftspeed)
 
 def stop():
-    print("Stopping")
     robot.stop()

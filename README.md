@@ -1,6 +1,6 @@
 # Raspberry Pi CamJam EduKit 3 Web Controlled Robot With Video Stream
 
-Raspberry Pi Robot that can be controlled via a website with a live streaming webcam. Using [Flask](https://flask.palletsprojects.com/en/1.1.x/),  and
+Raspberry Pi Robot that can be controlled via a website with a live streaming webcam using [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
 Adapted from [James Poole's](http://jamespoole.me/2016/04/29/web-controlled-robot-with-video-stream/) and [Pablo Rogina's](https://bitbucket.org/pablojr/webcontrolledrobot/src/master/) projects with changes as follows:
 

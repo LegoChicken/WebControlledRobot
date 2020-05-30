@@ -5,7 +5,7 @@
 import subprocess
 from time import sleep
 
-streamer_args = ["mjpg_streamer", "-i", "input_raspicam.so -hf -vf -fps 10", "-o", "output_http.so -w /usr/local/share/mjpg-streamer/www/"]
+streamer_args = ["mjpg_streamer", "-i", "input_raspicam.so -hf -vf -fps 15", "-o", "output_http.so -w /usr/local/share/mjpg-streamer/www/"]
 streamer_process = None
 
 def start():

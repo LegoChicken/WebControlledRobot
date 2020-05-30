@@ -7,10 +7,11 @@
 # app.py
 #######
 
+# https://flask.palletsprojects.com/en/1.1.x/
 from flask import Flask, render_template, request, redirect, url_for, make_response
 import motors
 import streamer
-import signal
+import signal # https://docs.python.org/3/library/signal.html
 import sys
 
 streamer.start()
